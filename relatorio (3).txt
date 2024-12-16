@@ -1,0 +1,44 @@
+Gabriel Rosas 2210689 3WB
+Luisa Silveira 2210875 3WB
+
+Nesse trabalho fomos encarregados de fazer dois funções "compacta" e "descompacta".
+
+O  propósito da compacta é compactar os dados do arquivo de texto, substituindo cada letra por seu código correspondente presente no vetor compactadora, e escrever esses códigos compactados como bytes no arquivo binário. Inicialmente, a função inicializa duas variáveis: byte, que funciona como um buffer para armazenar os bits compactados, e contbits, um contador que acompanha quantos bits foram adicionados ao buffer.Depois, o arquivo texto é lido. Para cada letra lida, o vetor é percorrido em busca do símbolo correspondente. Quando o símbolo é encontrado, seu código é adicionado ao buffer byte. Se o buffer atingir ou ultrapassar o tamanho de um byte (8 bits), o byte compactado é escrito no arquivo binário.
+Ao final do processo de compactação de todas as letras, a função escreve o código do End of Transmission (EOT) no arquivo binário, garantindo que o descompactador saiba onde os dados compactados terminam.
+  
+Para a função descompacta recebemos um fluxo de bits e então lemos bit por bit e aos poucos preenchemos o buffer e para cada bit adicionado comparamos com os códigos existentes em nossa struct caso exista uma correspondência escrevemos no arquivo texto, caso contrário apenas continuamos o processo, até achar o EOT.
+
+TESTES DAS FUNÇÕES:
+
+Os testes foram feitos usando a usando hexdump -C "nome do arquivo texto de entrada", hexdump -C "nome do arquivo binário" e hexdump -C "nome do arquivo texto de saída" no terminal do linux.
+
+TESTES DA FUNÇÃO COMPACTA:
+
+Para a função compacta, nos testes iniciais, fizemos a mão a compactação do binário, e transformamos para hexadecimal, comparando os valores com os do hexdump -C "nome do arquivo binário".
+No início, tivemos problemas com letras com quantidade de bits grande e os bits terem que ser divididos para encaixar no byte. Consertamos isso, usando o while.
+
+OS testes dos arquivos, primeiramente, foram feitos com frases do dia a dia curtas e palavras, vendo se estava sendo compactado direito. Depois, usamos os caracteres "\n", ",", ".". Além disso, fizemos testes com letras que possuem tamanho grandes na struct, 12 bits ou 11 bits, por exemplo.
+
+Após a verificação que a compacta estava correta, passamos a construir a função descompacta.
+
+TESTES DA FUNÇÃO DESCOMPACTA:
+
+Para a função descompacta, fizemos fizemos a comparação do hexdump -C "nome do arquivo texto de entrada" com o  hexdump -C "nome do arquivo texto de saída, após a função de descompacta", vereificando se os hexadecimais estavam os mesmo nos dois arquivos.
+
+Para os testes da função descompacta, também frases simples e, depois, mais complexas, usando caracteres "\n", letras com um tamanho grande na struct, por exemplo.
+
+OUTRA ESTRUTURA:
+
+Além de testar com diversos conteúdos no arquivo texto, também testamos com estuturas diferentes. 
+Um exemplo de estrutura que utilizamos foi: 
+
+struct compactadora v[] = {
+{'A', 2, 5}, {'B', 3, 5}, {'C', 4, 5}, {'D', 5, 5}, {'E', 6, 5},
+{'F', 7, 5},  {'G', 8, 5}, {'H', 9, 5},  {'I', 10, 5}, {'J', 11, 5},
+{'K', 12, 5},  {'L', 13, 5}, {'M', 14, 5}, {'N', 15, 5}, {'O', 16, 5},
+{'P', 17, 5}, {'Q', 18, 5},  {'R', 19, 5}, {'S', 20, 5}, {'T', 21, 5},
+{'U', 22, 5},  {'V', 23, 5},  {'W', 24, 5},  {'X', 25, 5},  {'Y', 26, 5},
+{'Z', 27, 5}, {'.', 28, 5}, {',', 29, 5}, {' ', 30, 5},  {'\n', 31, 5},
+{0, 0, 0},    {4, 32, 5}};
+
+Vale ressaltar que em todos os testes feitos, o resultado foi correto.
