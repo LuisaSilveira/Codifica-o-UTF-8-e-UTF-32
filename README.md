@@ -1,4 +1,4 @@
-#INF1018 - Software Básico (2024.1)
+#INF1018 - Software Básico (2024.1)#
 
 Primeiro Trabalho:
 Compactação usando códigos livres de prefixo
