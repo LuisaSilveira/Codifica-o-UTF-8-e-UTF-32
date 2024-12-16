@@ -1,8 +1,9 @@
-*INF1018 - Software Básico (2024.2)*
+#INF1018 - Software Básico (2024.1)
 
 Primeiro Trabalho:
-Conversão entre codificações UNICODE
+Compactação usando códigos livres de prefixo
+O objetivo desse trabalho é implementar em Linguagem C uma função que permita compactar um texto e descompactá-lo usando um mapa de codificação, como aquele fornecido pelo algoritmo de Huffman.
 
-O objetivo deste trabalho é implementar, na linguagem C, duas funções (convUtf8p32 e convUtf32p8), que recebem como entrada um arquivo contendo um texto codificado em um formato UNICODE (UTF-8 ou UTF-32) e geram como saida um arquivo contendo o mesmo texto, codificado no outro formato.
+Instruções do programa e detalhes no site:  <https://www.inf.puc-rio.br/~inf1018/2024.1/trabs/t1/trab1-20241.html>
 
 
